@@ -11,17 +11,19 @@
 |
 */
 
-$factory->define(\App\Entities\Sommelier::class, function (Faker\Generator $faker) {
+$factory->define(\App\Entities\Restaurant::class, function (Faker\Generator $faker) {
 
     return [
-        'name'              => $faker->firstName,
-        'surname'           => $faker->lastName,
+        'company_name'      => $faker->company,
         'city'              => $faker->city,
         'province'          => $faker->citySuffix,
-        'address'           => $faker->address,
         'state'             => $faker->country,
-        'gender'            => $faker->randomElement($array = array ('male', 'female')),
-        'birthday'          => $faker->date(),
+        'address'           => $faker->address,
+        'fiscal_code'       => Faker\Provider\it_IT\Person::taxId(),
+        'VAT_number'        => Faker\Provider\fr_BE\Payment::vat(false),
+        'latitude'          => $faker->latitude,
+        'longitude'         => $faker->longitude,
         'phone'             => $faker->phoneNumber,
+        'fax'               => $faker->phoneNumber
     ];
 });

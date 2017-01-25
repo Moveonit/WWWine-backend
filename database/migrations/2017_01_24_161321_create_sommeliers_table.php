@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGuestsTable extends Migration
+class CreateSommeliersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateGuestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('guests', function (Blueprint $table) {
+        Schema::create('sommeliers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('surname');
             $table->string('city');
-            $table->string('address')->nullable();
+            $table->string('address');
             $table->date('birthday')->nullable();
             $table->string('state');
             $table->string('phone')->nullable();
@@ -36,6 +36,6 @@ class CreateGuestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('guests');
+        Schema::dropIfExists('sommeliers');
     }
 }

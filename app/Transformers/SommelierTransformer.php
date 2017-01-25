@@ -1,30 +1,25 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: DANIELE
- * Date: 12/10/2016
- * Time: 09:01
- */
 
 namespace App\Transformers;
 
-use App\Entities\Guest;
+use App\Entities\Sommelier;
 use Carbon\Carbon;
 use League\Fractal;
 
-class RestaurantTransformer extends Fractal\TransformerAbstract
+class SommelierTransformer extends Fractal\TransformerAbstract
 {
-    public function transform(Guest $guest)
+    public function transform(Sommelier $sommelier)
     {
         return [
-            'id'        => (integer) $guest->id,
-            'name'      => (string) $guest->name,
-            'surname'   => (string) $guest->surname,
-            'city'      => (string) $guest->city,
-            'province'  => (string) $guest->province,
-            'address'   => (string) $guest->address,
-            'birthday'  => (string) Carbon::parse($guest->birthday),
-            'gender'    => (string) $guest->gender,
+            'id'        => (integer)    $sommelier->id,
+            'name'      => (string)     $sommelier->name,
+            'surname'   => (string)     $sommelier->surname,
+            'city'      => (string)     $sommelier->city,
+            'province'  => (string)     $sommelier->province,
+            'address'   => (string)     $sommelier->address,
+            'state'     => (string)     $sommelier->state,
+            'birthday'  => (string)     Carbon::parse($sommelier->birthday),
+            'gender'    => (string)     $sommelier->gender,
         ];
     }
 }

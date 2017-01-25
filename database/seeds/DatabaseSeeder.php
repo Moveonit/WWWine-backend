@@ -12,5 +12,17 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
+        factory(\App\Entities\Guest::class, 50)->create()->each(function ($u) {
+            $u->user()->save(factory(\App\Entities\User::class)->make());
+        });
+        factory(\App\Entities\Restaurant::class, 50)->create()->each(function ($u) {
+            $u->user()->save(factory(\App\Entities\User::class)->make());
+        });
+        factory(\App\Entities\Winery::class, 50)->create()->each(function ($u) {
+            $u->user()->save(factory(\App\Entities\User::class)->make());
+        });
+        factory(\App\Entities\Sommelier::class, 50)->create()->each(function ($u) {
+            $u->user()->save(factory(\App\Entities\User::class)->make());
+        });
     }
 }

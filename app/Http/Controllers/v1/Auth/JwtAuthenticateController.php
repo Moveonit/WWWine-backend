@@ -1,7 +1,10 @@
 <?php
 namespace App\Http\Controllers\v1\Auth;
 
+use App\Entities\Winery;
 use App\Entities\Guest;
+use App\Entities\Restaurant;
+use App\Entities\Sommelier;
 use App\Transformers\UserTransformer;
 use Dingo\Api\Exception\ValidationHttpException;
 use Illuminate\Database\QueryException;
@@ -13,6 +16,7 @@ use Illuminate\Support\Facades\Validator;
 use JWTAuth;
 use Mockery\CountValidator\Exception;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Log;
 use Tymon\JWTAuth\Exceptions\TokenInvalidException;
@@ -38,39 +42,52 @@ class JwtAuthenticateController extends Controller
 
     public function signup(Request $request)
     {
-        $guest_id = 0;
         try {
             $validator = Validator::make($request->all(), [
                 'email' => 'required|email|max:255',
                 'password' => 'required',
-                'type' => 'required|in:guest,sommelier,restaurant,cellar',
-                'name' => 'required',
+                'type' => 'required|in:Guest,Sommelier,Restaurant,Winery',
+                'name' => 'required_if:type,Guest|required_if:type,Sommelier',
+                'surname' => 'required_if:type,Guest|required_if:type,Sommelier',
                 'state' => 'required',
                 'province' => 'required',
-                'surname' => 'required',
                 'city' => 'required',
-                'address' => 'required',
-                'birthday' => 'required|date',
-                'gender' => 'required'
+                'address' => 'required_if:type,Restaurant|required_if:type,Winery',
+                'gender' => 'required_if:type,Guest|required_if:type,Sommelier',
+                'phone' => 'required_if:type,Restaurant|required_if:type,Winery'
             ]);
 
             if ($validator->fails()) {
                 throw new ValidationHttpException($validator->errors()->all());
             }
 
-            $guest = Guest::create($request->all());
+            $userable = null;
 
-            $guest_id = $guest->id;
+            switch ($request->type){
+                case "Guest":
+                    $userable = Guest::create($request->all());
+                    break;
+                case "Sommelier":
+                    $userable = Sommelier::create($request->all());
+                    break;
+                case "Restaurant":
+                    $userable = Restaurant::create($request->all());
+                    break;
+                case "Winery":
+                    $userable = Winery::create($request->all());
+                    break;
+            }
 
             User::unguard();
             $userData["email"] = $request->email;
             $userData["password"] = bcrypt($request->password);
-            $userData["userable_id"] = $guest->id;
-            $userData["userable_type"] = "Guest";
+            $userData["userable_id"] = $userable->id;
+            $userData["userable_type"] = $request->type;
             $user = User::create($userData);
             User::reguard();
 
             if (!$user->id) {
+                $userable->forceDelete();
                 return $this->response->error('could_not_create_user', 500);
             }
 
@@ -80,20 +97,16 @@ class JwtAuthenticateController extends Controller
 
             //return $this->response->created();
         } catch (Exception $ex) {
-            if ($guest_id > 0) {
-                $guest = Guest::find($guest_id);
-
-                $guest->forceDelete();
+            if ($userable != null) {
+                $userable->forceDelete();
             }
 
             return response()->json([
                 'Error' => $ex->getMessage()
             ]);
         } catch (QueryException $ex) {
-            if ($guest_id > 0) {
-                $guest = Guest::find($guest_id);
-
-                $guest->forceDelete();
+            if ($userable != null) {
+                $userable->forceDelete();
             }
 
             return response()->json([
@@ -128,7 +141,7 @@ class JwtAuthenticateController extends Controller
     {
         $token = JWTAuth::getToken();
         if (!$token) {
-            throw new BadRequestHtttpException('Token not provided');
+            throw new BadRequestHttpException('Token not provided');
         }
         try {
             $token = JWTAuth::refresh($token);

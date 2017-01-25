@@ -11,7 +11,7 @@
 |
 */
 
-$factory->define(\App\Entities\Guest::class, function (Faker\Generator $faker) {
+$factory->define(\App\Entities\Sommelier::class, function (Faker\Generator $faker) {
 
     return [
         'name'              => $faker->firstName,
@@ -21,7 +21,7 @@ $factory->define(\App\Entities\Guest::class, function (Faker\Generator $faker) {
         'address'           => $faker->address,
         'state'             => $faker->country,
         'gender'            => $faker->randomElement($array = array ('male', 'female')),
-        'birthday'          => $faker->date(),
+        'birthday'          => date("Y-m-d", strtotime($faker->date())),
         'phone'             => $faker->phoneNumber,
     ];
 });

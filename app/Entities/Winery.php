@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Cellar
+ * Class Winery
  * @property integer  id
- * @property string   company name
+ * @property string   company_name
  * @property string   city
  * @property string   province
  * @property string   state
@@ -18,16 +18,23 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string   fiscal_code
  * @property string   phone
  * @property string   fax
+ * @property float    latitude
+ * @property float    longitude
  * @property Carbon   created_at
  * @property Carbon   updated_at
  * @property Carbon   deleted_at
  */
-class Cellar extends Model
+class Winery extends Model
 {
     //
     use SoftDeletes;
 
-    protected $fillable = ['name', 'surname', 'city', 'address', 'birthday','state','province', 'gender'];
+    protected $fillable = ['company_name', 'city', 'province', 'state', 'address','VAT_Number','fiscal_code', 'phone', 'fax', 'latitude', 'longitude'];
 
     protected $guarded = ['id'];
+
+    public function user()
+    {
+        return $this->morphMany('User', 'userable');
+    }
 }

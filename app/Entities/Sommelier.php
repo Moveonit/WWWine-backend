@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Guest
+ * Class Sommelier
  * @property integer  id
  * @property string   name
  * @property string   surname
@@ -17,16 +17,22 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string   address
  * @property Carbon   birthday
  * @property string   gender
+ * @property string   phone
  * @property Carbon   created_at
  * @property Carbon   updated_at
  * @property Carbon   deleted_at
  */
-class Guest extends Model
+class Sommelier extends Model
 {
     //
     use SoftDeletes;
 
-    protected $fillable = ['name', 'surname', 'city', 'address', 'birthday','state','province', 'gender'];
+    protected $fillable = ['name', 'surname', 'city', 'address', 'birthday','state','province', 'gender', 'phone'];
 
     protected $guarded = ['id'];
+
+    public function user()
+    {
+        return $this->morphMany('User', 'userable');
+    }
 }

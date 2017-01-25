@@ -14,27 +14,19 @@ $api->version('v1', function ($api) {
 
         $api->get('checkemail/{email}','UserController@checkemail');
 
-        $api->get('/prova', function () {
-            return "Prova";
-        });
-
-        $api->group(['middleware' => 'jwt.auth',], function ($api) {
+        $api->group(['middleware' => 'jwt.auth'], function ($api) {
 
             $api->get('me', 'UserController@me');
 
-            $api->resource('users', 'UserController',['only' => ['store']]);
-
-            $api->resource('spas', 'SpaController',['only' => ['index','show', 'store', 'update']]);
-
-            $api->resource('treatments', 'TreatmentController',['only' => ['index','show', 'store', 'update']]);
-
-            $api->resource('treatmentcategories', 'TreatmentCategoryController',['only' => ['index','show', 'store', 'update']]);
-
-            $api->get('treatmentcategories/{id}/treatments', 'TreatmentCategoryController@getTreatments');
-
-            $api->resource('employees', 'EmployeeController',['only' => ['index','show', 'store', 'update']]);
-
             $api->resource('guests', 'GuestController',['only' => ['index', 'store', 'update']]);
+
+            $api->resource('restaurants', 'RestaurantController',['only' => ['index', 'store', 'update']]);
+
+            $api->resource('sommeliers', 'SommelierController',['only' => ['index', 'store', 'update']]);
+
+            $api->resource('wineries', 'WineryController',['only' => ['index', 'store', 'update']]);
+
+            $api->resource('wines', 'WineController',['only' => ['index', 'store', 'update']]);
 
             $api->post('changePassword','Auth\JwtAuthenticateController@changePassword');
         });

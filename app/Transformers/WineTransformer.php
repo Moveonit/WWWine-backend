@@ -1,35 +1,32 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: DANIELE
- * Date: 12/10/2016
- * Time: 09:01
- */
 
 namespace App\Transformers;
 
-use App\Entities\Guest;
-use App\Entities\Winery;
-use Carbon\Carbon;
+use App\Entities\Wine;
 use League\Fractal;
 
-class WineryTransformer extends Fractal\TransformerAbstract
+class WineTransformer extends Fractal\TransformerAbstract
 {
-    public function transform(Winery $winery)
+    public function transform(Wine $wine)
     {
         return [
-            'id'                => (integer) $winery->id,
-            'company_name'      => (string) $winery->company_name,
-            'city'              => (string) $winery->city,
-            'province'          => (string) $winery->province,
-            'state'             => (string) $winery->state,
-            'address'           => (string) $winery->address,
-            'VAT_Number'        => (string) $winery->VAT_Number,
-            'fiscal_code'       => (string) $winery->fiscal_code,
-            'phone'             => (string) $winery->phone,
-            'fax'               => (string) $winery->fax,
-            'latitude'          => (float) $winery->latitude,
-            'longitude'         => (float) $winery->longitude
+            'id'                    => (int)    $wine->id,
+            'name'                  => (string) $wine->name,
+            'production_year'       => (int)    $wine->production_year,
+            'classification'        => (string) $wine->classification,
+            'production_area'       => (string) $wine->production_area,
+            'grapes_type'           => (string) $wine->grapes_type,
+            'grapes_area'           => (string) $wine->grapes_area,
+            'grapes_latitude'       => (float)  $wine->grapes_latitude,
+            'grapes_longitude'      => (float)  $wine->grapes_longitude,
+            'color'                 => (string) $wine->color,
+            'fragrance'             => (string) $wine->fragrance,
+            'taste'                 => (string) $wine->taste,
+            'vinification'          => (string) $wine->vinification,
+            'proof'                 => (string) $wine->proof,
+            'service_temperature'   => (int)    $wine->service_temperature,
+            'refiniment'            => (string) $wine->refiniment,
+            'winery_id'             => (int)    $wine->winery_id
         ];
     }
 }

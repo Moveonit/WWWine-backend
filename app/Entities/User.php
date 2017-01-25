@@ -14,8 +14,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property string   name
  * @property integer  userable_id
  * @property string   userable_type
- * @property userable_id;
- * @property userable_type;
  * @property Carbon   created_at
  * @property Carbon   updated_at
  * @property Carbon   deleted_at
@@ -44,6 +42,9 @@ class User extends Authenticatable
         'password', 'remember_token'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
     public function userable()
     {
         return $this->morphTo();

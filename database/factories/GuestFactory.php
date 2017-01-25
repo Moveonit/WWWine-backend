@@ -11,13 +11,17 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
-    static $password;
+$factory->define(\App\Entities\Guest::class, function (Faker\Generator $faker) {
 
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
+        'name'              => $faker->firstName,
+        'surname'           => $faker->lastName,
+        'city'              => $faker->city,
+        'province'          => $faker->citySuffix,
+        'address'           => $faker->address,
+        'state'             => $faker->country,
+        'gender'            => $faker->randomElement($array = array ('male', 'female')),
+        'birthday'          => date("Y-m-d", strtotime($faker->date())),
+        'phone'             => $faker->phoneNumber,
     ];
 });

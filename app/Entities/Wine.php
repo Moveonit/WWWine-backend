@@ -7,26 +7,34 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Sommelier
+ * Class Wine
  * @property integer  id
  * @property string   name
- * @property string   surname
- * @property string   city
- * @property string   province
- * @property string   state
- * @property string   address
- * @property Carbon   birthday
- * @property string   gender
+ * @property string   classification
+ * @property string   production_area
+ * @property int   production_year
+ * @property string   grapes_type
+ * @property string   grapes_area
+ * @property string   color
+ * @property string   fragrance
+ * @property string   taste
+ * @property string   vinification
+ * @property float    proof
+ * @property float    grapes_longitude
+ * @property float    grapes_latitude
+ * @property int      service_temperature
+ * @property string   refiniment
+ * @property int      winery_id
  * @property Carbon   created_at
  * @property Carbon   updated_at
  * @property Carbon   deleted_at
  */
-class Sommelier extends Model
+class Wine extends Model
 {
     //
     use SoftDeletes;
 
-    protected $fillable = ['name', 'surname', 'city', 'address', 'birthday','state','province', 'gender'];
+    protected $fillable = ['name', 'classification', 'production_area', 'production_year', 'grapes_type','grapes_area','color', 'fragrance', 'taste', 'vinification', 'proof', 'service_temperature', 'refiniment', 'winery_id'];
 
     protected $guarded = ['id'];
 }
