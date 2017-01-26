@@ -30,6 +30,7 @@ class CreateWinesTable extends Migration
             $table->string('proof')->nullable();
             $table->string('service_temperature')->nullable();
             $table->string('refiniment')->nullable();
+            $table->boolean('verified')->default(false)->nullable();
             $table->bigInteger('winery_id')->unsigned()->nullable();
 
             $table->foreign('winery_id')->references('id')->on('wineries');

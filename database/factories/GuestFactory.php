@@ -13,13 +13,20 @@
 
 $factory->define(\App\Entities\Guest::class, function (Faker\Generator $faker) {
 
+    $faker->addProvider(new Faker\Provider\it_IT\Address($faker));
+    $faker->addProvider(new Faker\Provider\it_IT\Person($faker));
+    $faker->addProvider(new Faker\Provider\it_IT\Company($faker));
+    $faker->addProvider(new Faker\Provider\it_IT\Internet($faker));
+    $faker->addProvider(new Faker\Provider\it_IT\PhoneNumber($faker));
+    $faker->addProvider(new Faker\Provider\it_IT\Text($faker));
+
     return [
         'name'              => $faker->firstName,
         'surname'           => $faker->lastName,
-        'city'              => $faker->city,
-        'province'          => $faker->citySuffix,
+        'city'              => $faker->state(),
+        'province'          => $faker->stateAbbr(),
         'address'           => $faker->address,
-        'state'             => $faker->country,
+        'country'           => "it",
         'gender'            => $faker->randomElement($array = array ('male', 'female')),
         'birthday'          => date("Y-m-d", strtotime($faker->date())),
         'phone'             => $faker->phoneNumber,

@@ -18,7 +18,7 @@ class CreateWineriesTable extends Migration
             $table->string('company_name');
             $table->string('city');
             $table->string('province');
-            $table->string('state');
+            $table->string('country');
             $table->string('address');
             $table->decimal('longitude', 10, 7)->nullable();
             $table->decimal('latitude', 10, 7)->nullable();

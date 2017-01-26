@@ -51,6 +51,7 @@ class RestaurantController extends Controller
     public function show($id)
     {
         //
+        return $this->transformModel(Restaurant::findOrFail($id),new RestaurantTransformer);
     }
 
     /**

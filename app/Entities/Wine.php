@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string   name
  * @property string   classification
  * @property string   production_area
- * @property int   production_year
+ * @property int      production_year
  * @property string   grapes_type
  * @property string   grapes_area
  * @property string   color
@@ -25,6 +25,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int      service_temperature
  * @property string   refiniment
  * @property int      winery_id
+ * @property bool     verified
  * @property Carbon   created_at
  * @property Carbon   updated_at
  * @property Carbon   deleted_at
@@ -34,7 +35,7 @@ class Wine extends Model
     //
     use SoftDeletes;
 
-    protected $fillable = ['name', 'classification', 'production_area', 'production_year', 'grapes_type','grapes_area','color', 'fragrance', 'taste', 'vinification', 'proof', 'service_temperature', 'refiniment', 'winery_id'];
+    protected $fillable = ['name', 'classification', 'production_area', 'production_year', 'grapes_type', 'grapes_area','color', 'fragrance', 'taste', 'vinification', 'proof', 'service_temperature', 'refiniment', 'winery_id', 'verified'];
 
     protected $guarded = ['id'];
 }

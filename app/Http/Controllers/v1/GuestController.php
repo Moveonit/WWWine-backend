@@ -86,5 +86,6 @@ class GuestController extends Controller
     public function destroy($id)
     {
         //
+        return ;
     }
 }

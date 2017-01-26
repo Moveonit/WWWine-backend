@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string   company_name
  * @property string   city
  * @property string   province
- * @property string   state
+ * @property string   country
  * @property string   address
  * @property string   VAT_Number
  * @property string   fiscal_code
@@ -29,7 +29,7 @@ class Winery extends Model
     //
     use SoftDeletes;
 
-    protected $fillable = ['company_name', 'city', 'province', 'state', 'address','VAT_Number','fiscal_code', 'phone', 'fax', 'latitude', 'longitude'];
+    protected $fillable = ['company_name', 'city', 'province', 'country', 'address','VAT_Number','fiscal_code', 'phone', 'fax', 'latitude', 'longitude'];
 
     protected $guarded = ['id'];
 

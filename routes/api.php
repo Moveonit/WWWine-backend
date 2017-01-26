@@ -14,19 +14,25 @@ $api->version('v1', function ($api) {
 
         $api->get('checkemail/{email}','UserController@checkemail');
 
+        $api->get('send','Auth\JwtAuthenticateController@sendMail');
+
+        $api->get('user/activation/{token}', 'Auth\JwtAuthenticateController@activateUser');
+
+        $api->get('user/remove/{token}', 'Auth\JwtAuthenticateController@removeUser');
+
         $api->group(['middleware' => 'jwt.auth'], function ($api) {
 
             $api->get('me', 'UserController@me');
 
-            $api->resource('guests', 'GuestController',['only' => ['index', 'store', 'update']]);
+            $api->resource('guests', 'GuestController',['only' => ['index', 'show', 'store', 'update', 'destroy']]);
 
-            $api->resource('restaurants', 'RestaurantController',['only' => ['index', 'store', 'update']]);
+            $api->resource('restaurants', 'RestaurantController',['only' => ['index', 'show', 'store', 'update', 'destroy']]);
 
-            $api->resource('sommeliers', 'SommelierController',['only' => ['index', 'store', 'update']]);
+            $api->resource('sommeliers', 'SommelierController',['only' => ['index', 'show', 'store', 'update', 'destroy']]);
 
-            $api->resource('wineries', 'WineryController',['only' => ['index', 'store', 'update']]);
+            $api->resource('wineries', 'WineryController',['only' => ['index', 'show', 'store', 'update', 'destroy']]);
 
-            $api->resource('wines', 'WineController',['only' => ['index', 'store', 'update']]);
+            $api->resource('wines', 'WineController',['only' => ['index', 'show', 'store', 'update', 'destroy']]);
 
             $api->post('changePassword','Auth\JwtAuthenticateController@changePassword');
         });

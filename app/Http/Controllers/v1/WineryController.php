@@ -51,6 +51,7 @@ class WineryController extends Controller
     public function show($id)
     {
         //
+        return $this->transformModel(Winery::findOrFail($id),new WineryTransformer);
     }
 
     /**

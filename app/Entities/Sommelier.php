@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string   surname
  * @property string   city
  * @property string   province
- * @property string   state
+ * @property string   country
  * @property string   address
  * @property Carbon   birthday
  * @property string   gender
@@ -27,7 +27,7 @@ class Sommelier extends Model
     //
     use SoftDeletes;
 
-    protected $fillable = ['name', 'surname', 'city', 'address', 'birthday','state','province', 'gender', 'phone'];
+    protected $fillable = ['name', 'surname', 'city', 'address', 'birthday','country','province', 'gender', 'phone'];
 
     protected $guarded = ['id'];
 

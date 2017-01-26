@@ -4,6 +4,8 @@ namespace App\Http\Controllers\v1;
 
 use App\Entities\Wine;
 use App\Http\Controllers\Controller;
+use App\Transformers\WineryTransformer;
+use App\Transformers\WineTransformer;
 use Illuminate\Http\Request;
 
 class WineController extends Controller
@@ -39,6 +41,7 @@ class WineController extends Controller
     public function store(Request $request)
     {
         //
+
     }
 
     /**
@@ -50,6 +53,7 @@ class WineController extends Controller
     public function show($id)
     {
         //
+        return $this->transformModel(Wine::findOrFail($id),new WineTransformer);
     }
 
     /**

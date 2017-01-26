@@ -51,6 +51,7 @@ class SommelierController extends Controller
     public function show($id)
     {
         //
+        return $this->transformModel(Sommelier::findOrFail($id),new SommelierTransformer);
     }
 
     /**

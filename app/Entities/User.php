@@ -12,6 +12,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property integer  id
  * @property string   email
  * @property string   name
+ * @property bool     activated
+ * @property string   token_activation
  * @property integer  userable_id
  * @property string   userable_type
  * @property Carbon   created_at
