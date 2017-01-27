@@ -86,7 +86,8 @@ class JwtAuthenticateController extends Controller
             User::unguard();
             $userData["email"] = $request->email;
             $userData["password"] = bcrypt($request->password);
-            $userData["activated"] = true;
+            $userData["activated"] = false;
+            //$userData["activated"] = true;
             $userData["userable_id"] = $userable->id;
             $userData["userable_type"] = $request->type;
             $userData["token_activation"] = ((string)$this->randomToken());
