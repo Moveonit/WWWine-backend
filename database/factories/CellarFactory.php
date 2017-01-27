@@ -11,7 +11,7 @@
 |
 */
 
-$factory->define(\App\Entities\Winery::class, function (Faker\Generator $faker) {
+$factory->define(\App\Entities\Cellar::class, function (Faker\Generator $faker) {
 
     $faker->addProvider(new Faker\Provider\it_IT\Address($faker));
     $faker->addProvider(new Faker\Provider\it_IT\Person($faker));

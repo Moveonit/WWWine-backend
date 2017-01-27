@@ -27,7 +27,9 @@ class CreateTastingsTable extends Migration
             $table->integer('min_participants');
             $table->integer('max_participants');
             $table->string('privacy');
-            $table->morphs('hostable')->nullable();
+            $table->boolean('resell')->default(true);
+            $table->string('hostable_type')->nullable();
+            $table->integer('hostable_id')->unsigned()->nullable();
             $table->bigInteger('user_id')->unsigned();
 
             $table->foreign('user_id')->references('id')->on('users');

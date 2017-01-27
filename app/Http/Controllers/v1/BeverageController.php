@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\v1;
 
-use App\Entities\Wine;
+use App\Entities\Beverage;
 use App\Http\Controllers\Controller;
-use App\Transformers\WineryTransformer;
-use App\Transformers\WineTransformer;
+use App\Transformers\BeverageTransformer;
 use Illuminate\Http\Request;
 
-class WineController extends Controller
+class BeverageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +17,7 @@ class WineController extends Controller
     public function index()
     {
         //
-        return $this->trasformPaginate(Wine::paginate(),WineryTransformer::class);
+        return $this->trasformPaginate(Beverage::paginate(),BeverageTransformer::class);
 
     }
 
@@ -53,7 +52,7 @@ class WineController extends Controller
     public function show($id)
     {
         //
-        return $this->transformModel(Wine::findOrFail($id),new WineTransformer);
+        return $this->transformModel(Beverage::findOrFail($id),new BeverageTransformer);
     }
 
     /**

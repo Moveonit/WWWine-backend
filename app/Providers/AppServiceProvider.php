@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
+use App\Entities\Cellar;
 use App\Entities\Guest;
 use App\Entities\Restaurant;
 use App\Entities\Sommelier;
-use App\Entities\Winery;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 
@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
         //
         Relation::morphMap([
             'Guest' => Guest::class,
-            'Winery' =>  Winery::class,
+            'Cellar' =>  Cellar::class,
             'Restaurant' =>  Restaurant::class,
             'Sommelier' =>  Sommelier::class,
         ]);

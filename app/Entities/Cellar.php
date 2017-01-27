@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Winery
+ * Class Cellar
  * @property integer  id
  * @property string   company_name
  * @property string   city
@@ -24,7 +24,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon   updated_at
  * @property Carbon   deleted_at
  */
-class Winery extends Model
+class Cellar extends Model
 {
     //
     use SoftDeletes;

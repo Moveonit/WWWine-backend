@@ -232,8 +232,8 @@ return [
         'Sommelier'             => 'App\Entities\Sommelier',
         'Guest'                 => 'App\Entities\Guest',
         'Restaurant'            => 'App\Entities\Restaurant',
-        'Winery'                => 'App\Entities\Winery',
-        'Wine'                  => 'App\Entitites\Wine',
+        'Cellar'                => 'App\Entities\Cellar',
+        'Beverage'              => 'App\Entitites\Beverage',
         'User'                  => 'App\Entities\User',
     ],
 

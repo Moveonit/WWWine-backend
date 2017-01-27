@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\v1;
 
-use App\Entities\Winery;
+use App\Entities\Cellar;
 use App\Http\Controllers\Controller;
-use App\Transformers\WineryTransformer;
+use App\Transformers\CellarTransformer;
 use Illuminate\Http\Request;
 
-class WineryController extends Controller
+class CellarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class WineryController extends Controller
     public function index()
     {
         //
-        return $this->trasformPaginate(Winery::paginate(),WineryTransformer::class);
+        return $this->trasformPaginate(Cellar::paginate(),CellarTransformer::class);
 
     }
 
@@ -51,7 +51,7 @@ class WineryController extends Controller
     public function show($id)
     {
         //
-        return $this->transformModel(Winery::findOrFail($id),new WineryTransformer);
+        return $this->transformModel(Cellar::findOrFail($id),new CellarTransformer);
     }
 
     /**

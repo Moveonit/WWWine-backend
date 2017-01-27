@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers\v1\Auth;
 
-use App\Entities\Winery;
+use App\Entities\Cellar;
 use App\Entities\Guest;
 use App\Entities\Restaurant;
 use App\Entities\Sommelier;
@@ -51,15 +51,15 @@ class JwtAuthenticateController extends Controller
             $validator = Validator::make($request->all(), [
                 'email'     => 'required|email|max:255',
                 'password'  => 'required',
-                'type'      => 'required|in:Guest,Sommelier,Restaurant,Winery',
+                'type'      => 'required|in:Guest,Sommelier,Restaurant,Cellar',
                 'name'      => 'required_if:type,Guest|required_if:type,Sommelier',
                 'surname'   => 'required_if:type,Guest|required_if:type,Sommelier',
                 'country'   => 'required',
                 'province'  => 'required',
                 'city'      => 'required',
-                'address'   => 'required_if:type,Restaurant|required_if:type,Winery',
+                'address'   => 'required_if:type,Restaurant|required_if:type,Cellar',
                 'gender'    => 'required_if:type,Guest|required_if:type,Sommelier',
-                'phone'     => 'required_if:type,Restaurant|required_if:type,Winery'
+                'phone'     => 'required_if:type,Restaurant|required_if:type,Cellar'
             ]);
 
             if ($validator->fails()) {
@@ -78,8 +78,8 @@ class JwtAuthenticateController extends Controller
                 case "Restaurant":
                     $userable = Restaurant::create($request->all());
                     break;
-                case "Winery":
-                    $userable = Winery::create($request->all());
+                case "Cellar":
+                    $userable = Cellar::create($request->all());
                     break;
             }
 

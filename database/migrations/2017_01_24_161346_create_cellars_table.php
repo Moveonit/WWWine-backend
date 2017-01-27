@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWineriesTable extends Migration
+class CreateCellarsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateWineriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('wineries', function (Blueprint $table) {
+        Schema::create('cellars', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('company_name');
             $table->string('city');
@@ -38,6 +38,6 @@ class CreateWineriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wineries');
+        Schema::dropIfExists('cellars');
     }
 }

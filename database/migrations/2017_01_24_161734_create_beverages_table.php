@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWinesTable extends Migration
+class CreateBeveragesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateWinesTable extends Migration
      */
     public function up()
     {
-        Schema::create('wines', function (Blueprint $table) {
+        Schema::create('beverages', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->integer('production_year');
@@ -31,11 +31,11 @@ class CreateWinesTable extends Migration
             $table->string('service_temperature')->nullable();
             $table->string('refiniment')->nullable();
             $table->boolean('verified')->default(false);
-            $table->bigInteger('winery_id')->unsigned()->nullable();
+            $table->bigInteger('cellar_id')->unsigned()->nullable();
             $table->bigInteger('user_id')->unsigned();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('winery_id')->references('id')->on('wineries');
+            $table->foreign('cellar_id')->references('id')->on('cellars');
 
             $table->timestamps();
             $table->softDeletes();
@@ -49,6 +49,6 @@ class CreateWinesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wines');
+        Schema::dropIfExists('beverages');
     }
 }

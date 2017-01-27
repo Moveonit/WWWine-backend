@@ -30,9 +30,9 @@ $api->version('v1', function ($api) {
 
             $api->resource('sommeliers', 'SommelierController',['only' => ['index', 'show', 'store', 'update', 'destroy']]);
 
-            $api->resource('wineries', 'WineryControl',['only' => ['index', 'show', 'store', 'update', 'destroy']]);
+            $api->resource('cellars', 'CellarController',['only' => ['index', 'show', 'store', 'update', 'destroy']]);
 
-            $api->resource('wines', 'WineController',['only' => ['index', 'show', 'store', 'update', 'destroy']]);
+            $api->resource('beverages', 'BeverageController',['only' => ['index', 'show', 'store', 'update', 'destroy']]);
 
             $api->post('changePassword','Auth\JwtAuthenticateController@changePassword');
 
