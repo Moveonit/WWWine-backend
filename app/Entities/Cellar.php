@@ -17,6 +17,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string   VAT_Number
  * @property string   fiscal_code
  * @property string   phone
+ * @property string   avatar
+ * @property string   cover
  * @property string   fax
  * @property float    latitude
  * @property float    longitude
@@ -29,7 +31,7 @@ class Cellar extends Model
     //
     use SoftDeletes;
 
-    protected $fillable = ['company_name', 'city', 'province', 'country', 'address','VAT_Number','fiscal_code', 'phone', 'fax', 'latitude', 'longitude'];
+    protected $fillable = ['company_name', 'city', 'province', 'country', 'address','VAT_Number','fiscal_code','avatar', 'cover', 'phone', 'fax', 'latitude', 'longitude'];
 
     protected $guarded = ['id'];
 

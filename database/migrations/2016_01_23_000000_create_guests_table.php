@@ -18,6 +18,8 @@ class CreateGuestsTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('city');
+            $table->string('avatar')->nullable();
+            $table->string('cover')->nullable();
             $table->string('address')->nullable();
             $table->date('birthday')->nullable();
             $table->string('country');

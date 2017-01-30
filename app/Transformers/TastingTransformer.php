@@ -6,7 +6,7 @@ use App\Entities\Beverage;
 use Carbon\Carbon;
 use League\Fractal;
 
-class BeverageTransformer extends Fractal\TransformerAbstract
+class TastingTransformer extends Fractal\TransformerAbstract
 {
     public function transform(Beverage $beverage)
     {
@@ -28,6 +28,9 @@ class BeverageTransformer extends Fractal\TransformerAbstract
             'service_temperature'   => (int)    $beverage->service_temperature,
             'refiniment'            => (string) $beverage->refiniment,
             'cellar_id'             => (int)    $beverage->cellar_id,
+            'cellar'                => $beverage->cellar,
+            'user_id'               => (int)    $beverage->user_id,
+            'user'                  => $beverage->user,
             'created_at'            => (string) Carbon::parse($beverage->created_at),
             'updated_at'            => (string) Carbon::parse($beverage->updated_at),
             'deleted_at'            => (string) Carbon::parse($beverage->deleted_at)

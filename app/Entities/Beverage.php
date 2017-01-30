@@ -25,6 +25,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int      service_temperature
  * @property string   refiniment
  * @property int      cellar_id
+ * @property Cellar   cellar
+ * @property int      user_id
+ * @property User     user
  * @property bool     verified
  * @property Carbon   created_at
  * @property Carbon   updated_at
@@ -35,7 +38,35 @@ class Beverage extends Model
     //
     use SoftDeletes;
 
-    protected $fillable = ['name', 'classification', 'production_area', 'production_year', 'grapes_type', 'grapes_area','color', 'fragrance', 'taste', 'vinification', 'proof', 'service_temperature', 'refiniment', 'cellar_id', 'verified'];
+    protected $fillable = [
+        'name',
+        'classification',
+        'production_area',
+        'production_year',
+        'grapes_type',
+        'grapes_area',
+        'user_id',
+        'color',
+        'fragrance',
+        'taste',
+        'vinification',
+        'proof',
+        'service_temperature',
+        'refiniment',
+        'cellar_id',
+        'user_id',
+        'verified'
+    ];
 
     protected $guarded = ['id'];
+
+    public function cellar()
+    {
+        return $this->hasOne(Cellar::class);
+    }
+
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
 }

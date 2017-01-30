@@ -51,4 +51,14 @@ class User extends Authenticatable
     {
         return $this->morphTo();
     }
+
+    public function events()
+    {
+        return $this->belongsTo(Event::class);
+    }
+
+    public function tastings()
+    {
+        return $this->belongsTo(Event::class);
+    }
 }

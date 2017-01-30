@@ -27,6 +27,8 @@ $factory->define(\App\Entities\Restaurant::class, function (Faker\Generator $fak
         'province'          => $faker->stateAbbr(),
         'address'           => $faker->address,
         'country'           => "it",
+        'avatar'            => "http://postscriptum-games.it/assets/post-scriptum-unknown-user-12b13115ab6cc8385c73c23f7c3e5465acfa1f8e7ef99568fcb464f0355561ef.png",
+        'cover'              => "http://postscriptum-games.it/assets/post-scriptum-unknown-user-12b13115ab6cc8385c73c23f7c3e5465acfa1f8e7ef99568fcb464f0355561ef.png",
         'fiscal_code'       => $faker->taxId(),
         'VAT_number'        => $faker->vatId(),
         'latitude'          => $faker->latitude,

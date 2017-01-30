@@ -18,6 +18,8 @@ class CreateBeveragesTable extends Migration
             $table->string('name');
             $table->integer('production_year');
             $table->string('classification')->nullable();
+            $table->string('avatar')->nullable();
+            $table->string('cover')->nullable();
             $table->string('production_area')->nullable();
             $table->string('grapes_type')->nullable();
             $table->string('grapes_area')->nullable();

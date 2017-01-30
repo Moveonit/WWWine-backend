@@ -17,6 +17,8 @@ class CreateTastingsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('description');
+            $table->string('avatar');
+            $table->string('cover');
             $table->string('location_name');
             $table->dateTime('date_start');
             $table->dateTime('date_finish');

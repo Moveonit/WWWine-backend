@@ -27,6 +27,8 @@ $factory->define(\App\Entities\Sommelier::class, function (Faker\Generator $fake
         'city'              => $faker->state(),
         'province'          => $faker->stateAbbr(),
         'address'           => $faker->address,
+        'avatar'            => "http://postscriptum-games.it/assets/post-scriptum-unknown-user-12b13115ab6cc8385c73c23f7c3e5465acfa1f8e7ef99568fcb464f0355561ef.png",
+        'cover'              => "http://postscriptum-games.it/assets/post-scriptum-unknown-user-12b13115ab6cc8385c73c23f7c3e5465acfa1f8e7ef99568fcb464f0355561ef.png",
         'country'           => "it",
         'gender'            => $faker->randomElement($array = array ('male', 'female')),
         'birthday'          => date("Y-m-d", strtotime($faker->date())),

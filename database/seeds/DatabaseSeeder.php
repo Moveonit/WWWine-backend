@@ -24,5 +24,7 @@ class DatabaseSeeder extends Seeder
         factory(\App\Entities\Sommelier::class, 50)->create()->each(function ($u) {
             $u->user()->save(factory(\App\Entities\User::class)->make());
         });
+
+        factory(\App\Entities\Beverage::class, 50)->create();
     }
 }

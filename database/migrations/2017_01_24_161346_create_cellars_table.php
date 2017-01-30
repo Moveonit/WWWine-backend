@@ -20,6 +20,8 @@ class CreateCellarsTable extends Migration
             $table->string('province');
             $table->string('country');
             $table->string('address');
+            $table->string('avatar')->nullable();
+            $table->string('cover')->nullable();
             $table->decimal('longitude', 10, 7)->nullable();
             $table->decimal('latitude', 10, 7)->nullable();
             $table->string('VAT_Number')->nullable();

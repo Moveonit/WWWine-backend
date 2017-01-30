@@ -3,6 +3,7 @@
 namespace App\Transformers;
 
 use App\Entities\Cellar;
+use Carbon\Carbon;
 use League\Fractal;
 
 class CellarTransformer extends Fractal\TransformerAbstract
@@ -21,7 +22,10 @@ class CellarTransformer extends Fractal\TransformerAbstract
             'phone'             => (string) $cellar->phone,
             'fax'               => (string) $cellar->fax,
             'latitude'          => (float) $cellar->latitude,
-            'longitude'         => (float) $cellar->longitude
+            'longitude'         => (float) $cellar->longitude,
+            'created_at'        => (string) Carbon::parse($cellar->created_at),
+            'updated_at'        => (string) Carbon::parse($cellar->updated_at),
+            'deleted_at'        => (string) Carbon::parse($cellar->deleted_at)
         ];
     }
 }

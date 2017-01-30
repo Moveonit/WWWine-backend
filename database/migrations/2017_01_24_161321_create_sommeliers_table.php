@@ -20,6 +20,8 @@ class CreateSommeliersTable extends Migration
             $table->string('city');
             $table->string('address');
             $table->date('birthday')->nullable();
+            $table->string('avatar')->nullable();
+            $table->string('cover')->nullable();
             $table->string('country');
             $table->string('phone')->nullable();
             $table->string('province');

@@ -16,6 +16,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string   country
  * @property string   address
  * @property Carbon   birthday
+ * @property string   avatar
+ * @property string   cover
  * @property string   gender
  * @property string   phone
  * @property Carbon   created_at
@@ -27,7 +29,7 @@ class Guest extends Model
     //
     use SoftDeletes;
 
-    protected $fillable = ['name', 'surname', 'city', 'address', 'birthday','country','province', 'gender', 'phone'];
+    protected $fillable = ['name', 'surname', 'city', 'address', 'birthday','country','province', 'gender', 'phone', 'avatar', 'cover'];
 
     protected $guarded = ['id'];
 
