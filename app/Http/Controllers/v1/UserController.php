@@ -89,6 +89,11 @@ class UserController extends Controller
         return $this->transformModel($user,new UserTransformer);
     }
 
+    public function prova(Request $request)
+    {
+        return $request->url();
+    }
+
     /**
      * Update the specified resource in storage.
      *

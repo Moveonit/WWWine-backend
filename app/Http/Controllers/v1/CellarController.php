@@ -14,10 +14,10 @@ class CellarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        return $this->trasformPaginate(Cellar::paginate(),CellarTransformer::class);
+        return $this->trasformPaginate(Cellar::filter($request)->paginate(),CellarTransformer::class);
 
     }
 

@@ -24,7 +24,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon   updated_at
  * @property Carbon   deleted_at
  */
-class Guest extends Model
+class Guest extends wwwModel
 {
     //
     use SoftDeletes;

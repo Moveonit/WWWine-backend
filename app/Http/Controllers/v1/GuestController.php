@@ -16,10 +16,10 @@ class GuestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        return $this->trasformPaginate(Guest::paginate(),GuestTransformer::class);
+        return $this->trasformPaginate(Guest::filter($request)->paginate(),GuestTransformer::class);
     }
 
     /**

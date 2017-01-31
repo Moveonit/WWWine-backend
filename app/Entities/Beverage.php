@@ -16,10 +16,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string   grapes_type
  * @property string   grapes_area
  * @property string   color
+ * @property string   type
  * @property string   fragrance
  * @property string   taste
  * @property string   vinification
- * @property float    proof
+ * @property float    alcohol
  * @property float    grapes_longitude
  * @property float    grapes_latitude
  * @property int      service_temperature
@@ -33,7 +34,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon   updated_at
  * @property Carbon   deleted_at
  */
-class Beverage extends Model
+class Beverage extends wwwModel
 {
     //
     use SoftDeletes;
@@ -41,6 +42,7 @@ class Beverage extends Model
     protected $fillable = [
         'name',
         'classification',
+        'type',
         'production_area',
         'production_year',
         'grapes_type',
@@ -50,7 +52,7 @@ class Beverage extends Model
         'fragrance',
         'taste',
         'vinification',
-        'proof',
+        'alcohol',
         'service_temperature',
         'refiniment',
         'cellar_id',
@@ -62,11 +64,16 @@ class Beverage extends Model
 
     public function cellar()
     {
-        return $this->hasOne(Cellar::class);
+        return $this->belongsTo(Cellar::class);
     }
 
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function tastings()
+    {
+        return $this->belongsToMany(Tasting::class);
     }
 }

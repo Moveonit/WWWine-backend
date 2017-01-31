@@ -14,10 +14,10 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        return $this->trasformPaginate(Event::paginate(),EventTransformer::class);
+        return $this->trasformPaginate(Event::filter($request)->paginate(),EventTransformer::class);
 
     }
 

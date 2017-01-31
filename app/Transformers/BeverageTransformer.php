@@ -10,9 +10,11 @@ class BeverageTransformer extends Fractal\TransformerAbstract
 {
     public function transform(Beverage $beverage)
     {
+        $user = $beverage->user;
         return [
             'id'                    => (int)    $beverage->id,
             'name'                  => (string) $beverage->name,
+            'type'                  => (string) $beverage->type,
             'production_year'       => (int)    $beverage->production_year,
             'classification'        => (string) $beverage->classification,
             'production_area'       => (string) $beverage->production_area,
@@ -24,13 +26,13 @@ class BeverageTransformer extends Fractal\TransformerAbstract
             'fragrance'             => (string) $beverage->fragrance,
             'taste'                 => (string) $beverage->taste,
             'vinification'          => (string) $beverage->vinification,
-            'proof'                 => (string) $beverage->proof,
+            'alcohol'               => (float)  $beverage->alcohol,
             'service_temperature'   => (int)    $beverage->service_temperature,
             'refiniment'            => (string) $beverage->refiniment,
-            'cellar_id'             => (int)    $beverage->cellar_id,
+            'producer'              =>          $beverage->cellar,
+            $user->userable_type    =>          $user->userable,
             'created_at'            => (string) Carbon::parse($beverage->created_at),
-            'updated_at'            => (string) Carbon::parse($beverage->updated_at),
-            'deleted_at'            => (string) Carbon::parse($beverage->deleted_at)
+            'updated_at'            => (string) Carbon::parse($beverage->updated_at)
         ];
     }
 }

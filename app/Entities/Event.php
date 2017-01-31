@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon   updated_at
  * @property Carbon   deleted_at
  */
-class Event extends Model
+class Event extends wwwModel
 {
     //
     use SoftDeletes;
@@ -47,6 +47,6 @@ class Event extends Model
      */
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 }

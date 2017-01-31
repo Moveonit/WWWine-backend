@@ -14,10 +14,10 @@ class TastingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        return $this->trasformPaginate(Tasting::paginate(),TastingTransformer::class);
+        return $this->trasformPaginate(Tasting::filter($request)->paginate(),TastingTransformer::class);
 
     }
 

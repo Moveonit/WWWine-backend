@@ -234,7 +234,7 @@ return [
         'Restaurant'            => 'App\Entities\Restaurant',
         'Cellar'                => 'App\Entities\Cellar',
         'Beverage'              => 'App\Entitites\Beverage',
-        //'Event'                 => 'App\Entitites\Event',
+        //'Event'               => 'App\Entitites\Event',
         'Tasting'               => 'App\Entitites\Tasting',
         'User'                  => 'App\Entities\User',
     ],

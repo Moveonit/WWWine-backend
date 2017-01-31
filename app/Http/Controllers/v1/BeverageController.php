@@ -5,6 +5,7 @@ namespace App\Http\Controllers\v1;
 use App\Entities\Beverage;
 use App\Http\Controllers\Controller;
 use App\Transformers\BeverageTransformer;
+use Dingo\Api\Http\Response;
 use Illuminate\Http\Request;
 
 class BeverageController extends Controller
@@ -14,10 +15,11 @@ class BeverageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        return $this->trasformPaginate(Beverage::paginate(),BeverageTransformer::class);
+
+        return $this->trasformPaginate(Beverage::filter($request)->paginate(),BeverageTransformer::class);
 
     }
 

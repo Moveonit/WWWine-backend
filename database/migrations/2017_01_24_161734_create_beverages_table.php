@@ -14,9 +14,10 @@ class CreateBeveragesTable extends Migration
     public function up()
     {
         Schema::create('beverages', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
             $table->integer('production_year');
+            $table->string('type');
             $table->string('classification')->nullable();
             $table->string('avatar')->nullable();
             $table->string('cover')->nullable();
@@ -29,7 +30,7 @@ class CreateBeveragesTable extends Migration
             $table->string('fragrance')->nullable();
             $table->string('taste')->nullable();
             $table->string('vinification')->nullable();
-            $table->string('proof')->nullable();
+            $table->float('alcohol')->nullable();
             $table->string('service_temperature')->nullable();
             $table->string('refiniment')->nullable();
             $table->boolean('verified')->default(false);
@@ -37,7 +38,7 @@ class CreateBeveragesTable extends Migration
             $table->bigInteger('user_id')->unsigned();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('cellar_id')->references('id')->on('cellars');
+            $table->foreign('cellar_id')->references('id')->on('cellars')->onDelete('cascade');;
 
             $table->timestamps();
             $table->softDeletes();

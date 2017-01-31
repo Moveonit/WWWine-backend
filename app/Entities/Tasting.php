@@ -32,7 +32,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon   updated_at
  * @property Carbon   deleted_at
  */
-class Tasting extends Model
+class Tasting extends wwwModel
 {
     //
     use SoftDeletes;
@@ -78,5 +78,10 @@ class Tasting extends Model
     public function hostable()
     {
         return $this->morphTo();
+    }
+
+    public function beverages()
+    {
+        return $this->belongsToMany(Beverage::class);
     }
 }

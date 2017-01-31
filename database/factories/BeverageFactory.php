@@ -25,6 +25,7 @@ $factory->define(\App\Entities\Beverage::class, function (Faker\Generator $faker
         'production_year'       => $faker->year,
         'classification'        => "Classificazione",
         'production_area'       => $faker->city,
+        'type'                  => $faker->randomElement($array = array ('wine', 'beer')),
         'grapes_type'           => "Tipo uva",
         'grapes_area'           => $faker->city,
         'grapes_latitude'       => $faker->latitude,
@@ -33,13 +34,12 @@ $factory->define(\App\Entities\Beverage::class, function (Faker\Generator $faker
         'fragrance'             => "fragranza",
         'taste'                 => "sapore",
         'vinification'          => "vinificazione",
-        'proof'                 => "odore",
+        'alcohol'               => $faker->randomFloat(1,0,99),
         'service_temperature'   => $faker->biasedNumberBetween(10,30),
         'refiniment'            => "raffinatezza",
         'cellar_id'             => $faker->biasedNumberBetween(1,50),
         'user_id'               => $faker->biasedNumberBetween(1,200),
         'created_at'            => $faker->dateTime,
-        'updated_at'            => $faker->dateTime,
-        'deleted_at'            => $faker->dateTime
+        'updated_at'            => $faker->dateTime
     ];
 });

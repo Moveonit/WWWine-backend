@@ -23,13 +23,13 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Relation::morphMap([
-            'Guest' => Guest::class,
-            'Cellar' =>  Cellar::class,
-            'Restaurant' =>  Restaurant::class,
-            'Sommelier' =>  Sommelier::class,
-            'Beverage' =>  Beverage::class,
-            'Event' =>  Event::class,
-            'Tasting' =>  Tasting::class,
+            'Guest'         =>  Guest::class,
+            'Cellar'        =>  Cellar::class,
+            'Restaurant'    =>  Restaurant::class,
+            'Sommelier'     =>  Sommelier::class,
+            'Beverage'      =>  Beverage::class,
+            'Event'         =>  Event::class,
+            'Tasting'       =>  Tasting::class,
         ]);
     }
 
